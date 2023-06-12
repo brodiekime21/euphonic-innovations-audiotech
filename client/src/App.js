@@ -1,20 +1,19 @@
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
+import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 
-import './App.css';
+import "./App.css";
 
-import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar";
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Account from './pages/Account';
-import Signup from './pages/Signup';
-import EditAccount from './pages/EditAccount';
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Account from "./pages/Account";
+import Signup from "./pages/Signup";
+import EditAccount from "./pages/EditAccount";
 
 function App() {
-
   const getToken = () => {
-    return localStorage.getItem("authToken")
-  }
+    return localStorage.getItem("authToken");
+  };
 
   const LoggedIn = () => {
     return getToken() ? <Outlet /> : <Navigate to="/" />;
@@ -26,29 +25,21 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
 
-<Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-<Routes>
+        <Route element={<LoggedIn />}>
+          <Route path="/account/:id" element={<Account />} />
+          <Route path="/edit-account/:id" element={<EditAccount />} />
+        </Route>
 
-  <Route path='/' element={<Home />} />
-
-  <Route element={<LoggedIn />}>
-
-  <Route path='/account/:id' element={<Account />} />
-  <Route path='/edit-account/:id' element={<EditAccount />} />
-
-  </Route>
-
-  <Route element={<NotLoggedIn />}>
-
-    <Route path='/signup' element={<Signup />} />
-    <Route path='/login' element={<Login />} />
-
-  </Route>
-
-</Routes>
-
+        <Route element={<NotLoggedIn />}>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
