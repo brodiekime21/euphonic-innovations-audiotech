@@ -50,6 +50,8 @@ router.post("/login", async (req, res, next) => {
         _id: foundUser._id,
         email: foundUser.email,
         name: foundUser.name,
+        products: foundUser.products,
+
       };
       const token = jwt.sign(payload, process.env.SECRET, {
         algorithm: "HS256",
@@ -66,6 +68,7 @@ router.post("/login", async (req, res, next) => {
 
 router.get("/verify", isAuthenticated, (req, res) => {
   User.findOne({_id: req.user._id})
+  .populate('products')
   .then((foundUser) => {
     const payload = { ...foundUser };
     delete payload._doc.password;

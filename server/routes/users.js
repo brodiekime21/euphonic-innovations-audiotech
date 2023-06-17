@@ -39,7 +39,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/users-products", isAuthenticated, async (req, res) => {
   try {
-    const products = await Sample.find();
+    const products = await Products.find();
     res.json(products);
   } catch (err) {
     res.json({ message: err.message });
