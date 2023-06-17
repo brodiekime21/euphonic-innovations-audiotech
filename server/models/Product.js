@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const sampleSchema = new Schema(
+const productSchema = new Schema(
   {
     product_file: {
       type: String,
@@ -29,6 +29,6 @@ const sampleSchema = new Schema(
   }
 );
 
-const Sample = model("Sample", sampleSchema);
+const Product = model("Product", productSchema);
 
-module.exports = Sample;
+module.exports = Product;
