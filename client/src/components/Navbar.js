@@ -20,7 +20,7 @@ const Navbar = () => {
         <img
           className="logoNavBar h-10"
           // src={require("../logoColor.png")}
-          alt="SampleWAV logo"
+          alt="Logo"
         />
       </Link>
 
