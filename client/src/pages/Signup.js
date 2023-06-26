@@ -8,7 +8,7 @@ const Signup = () => {
   const { authenticateUser } = useContext(AuthContext);
 
   const [newUser, setNewUser] = useState({
-    artist_name: "",
+    name: "",
     email: "",
     password: "",
   });
