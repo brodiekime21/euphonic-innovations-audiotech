@@ -45,8 +45,8 @@ const Signup = () => {
           <span>Artist Name:</span>
           <input
             type="text"
-            name="artist_name"
-            value={newUser.artist_name}
+            name="name"
+            value={newUser.name}
             onChange={handleChange}
             class="border border-gray-300 rounded-md p-1"
           />
